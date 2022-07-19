@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    height: 100vh;
+}
+
+#header {
+    text-align: center;
+    font-size: 3em;
+    padding: 1%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#instruction {
+    text-align: center;
+    font-size: 2em;
+    margin: 10% 0 5% 0;
+}
+
+#input-text {
+    width: 90%;
+    font-size: 2em;
+    text-align: center;
+    border-radius: 5px;
+    outline-color:rgb(15, 54, 15);
+}
+
+#operations {
+    border-radius:2px;
+    width: 50%;
+    text-align: center;
+    margin-top: 2%;
+    outline-color:rgb(15, 54, 15);
+    font-size: 1.2em;
+}
+
+::placeholder {
+    color: rgba(128, 128, 128, 0.404);
+}
+
+#result-text {
+    font-size: 2em;
+    margin-top: 2%;
+}
+
+#result-text::selection {
+    background: rgb(15, 54, 15);
+    color: white;
+}
