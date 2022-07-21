@@ -28,6 +28,7 @@ main {
 }
 
 #input-text {
+    overflow-x: scroll;
     width: 90%;
     font-size: 2em;
     text-align: center;
@@ -49,11 +50,24 @@ main {
 }
 
 #result-text {
+    overflow-x: scroll;
+    width: 99%;
     font-size: 2em;
     margin-top: 2%;
+    text-align: center;
+    border: 1px dotted rgb(15, 54, 15);
 }
 
-#result-text::selection {
+#from-input-text {
+    overflow-x: scroll;
+    width: 99%;
+    font-size: 2em;
+    margin-top: 2%;
+    text-align: center;
+    border: 1px dotted rgb(15, 54, 15);
+}
+
+::selection {
     background: rgb(15, 54, 15);
     color: white;
 }
