@@ -71,3 +71,21 @@ main {
     background: rgb(15, 54, 15);
     color: white;
 }
+
+#replace-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 60%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 30%;
+    background-color: rgb(15, 54, 15);
+}
+
+#replace-form > *{
+    font-size: 2em;
+    margin: 5% 2%;
+}
