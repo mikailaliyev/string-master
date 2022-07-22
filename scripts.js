@@ -2,6 +2,7 @@ const selectedOperation = document.getElementById("operations");
 const inputText = document.getElementById("input-text");
 const resultText = document.getElementById("result-text");
 const fromInputText = document.getElementById("from-input-text");
+const main = document.getElementById("main");
 
 //Template for creating <br> with appending elements to DOM
 const appendElements = (target, text, operation) => {
@@ -99,6 +100,23 @@ const charactersCount = () => {
   if (inputText.value) {
     appendElements(fromInputText, "Input:");
     appendElements(resultText, "Result:", inputText.value.length);
+  }
+  resetInputOperations();
+};
+
+const replaceCharacters = () => {
+  if (inputText.value) {
+    const replaceForm = document.createElement("div")
+    replaceForm.id = 'replace-form'
+    const whatToChage = document.createElement("input")
+    const changeTarget = document.createElement("input")
+    replaceForm.append(whatToChage)
+    replaceForm.append(changeTarget)
+    main.append(replaceForm)
+
+    appendElements(fromInputText, "Input:");
+    appendElements()
+    appendElements(resultText, "Result:", inputText.value.replace());
   }
   resetInputOperations();
 };
