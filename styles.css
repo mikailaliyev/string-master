@@ -80,11 +80,18 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90%;
-  height: 30%;
-  background-color: rgb(15, 54, 15);
+  height: 50%;
+  background-color: gray;
 }
 
 #replace-form > * {
   font-size: 2em;
-  margin: 5% 2%;
+  margin: 2% 2%;
+  text-align: center;
+}
+
+#send-button {
+  width: fit-content;
+  height: fit-content;
+  align-self: center;
 }

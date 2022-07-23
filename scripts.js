@@ -106,17 +106,35 @@ const charactersCount = () => {
 
 const replaceCharacters = () => {
   if (inputText.value) {
+    //Creating form to get additional data from user
     const replaceForm = document.createElement("div")
-    replaceForm.id = 'replace-form'
     const whatToChage = document.createElement("input")
     const changeTarget = document.createElement("input")
+    const sendButton = document.createElement("button")
+
+    //Adding id's
+    replaceForm.id = 'replace-form'
+    sendButton.id = 'send-button'
+
+    //Texts
+    whatToChage.placeholder = "what to change"
+    changeTarget.placeholder = "to what change"
+    sendButton.innerText = "Send"
+
+    //Putting all together
     replaceForm.append(whatToChage)
     replaceForm.append(changeTarget)
+    replaceForm.append(sendButton)
     main.append(replaceForm)
 
-    appendElements(fromInputText, "Input:");
-
-    appendElements(resultText, "Result:", inputText.value.replace(changeTarget));
+    //Listening to button events to execute operational function
+    sendButton.addEventListener("click", () => {
+      if (whatToChage && changeTarget) {
+        appendElements(fromInputText, "Input:");
+        appendElements(resultText, "Result:", inputText.value.replace(changeTarget));
+        replaceForm.style.display = 'none'
+      }
+    })
   }
   resetInputOperations();
 };
