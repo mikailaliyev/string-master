@@ -115,34 +115,38 @@ const replaceCharacters = () => {
     main.append(replaceForm)
 
     appendElements(fromInputText, "Input:");
-    appendElements()
-    appendElements(resultText, "Result:", inputText.value.replace());
+
+    appendElements(resultText, "Result:", inputText.value.replace(changeTarget));
   }
   resetInputOperations();
 };
 
 //Listening to operation selection
 selectedOperation.addEventListener("change", () => {
-  let operationText =
-    selectedOperation.options[selectedOperation.selectedIndex].text;
-  switch (operationText) {
-    case "All letters UPPERCASE":
-      allUpperCase();
-      break;
-    case "All letters lowercase":
-      allLowerCase();
-      break;
-    case "Capitalize":
-      capitalize();
-      break;
-    case "Vowels&Consonants count":
-      vowelConsonantCount();
-      break;
-    case "Characters count":
-      charactersCount();
-      break;
-    case "Replace Characters":
-      replaceCharacters();
-      break;
+  if (inputText.value) {
+    resultText.innerText = ""
+    fromInputText.innerText = ""
+    let operationText =
+      selectedOperation.options[selectedOperation.selectedIndex].text;
+    switch (operationText) {
+      case "All letters UPPERCASE":
+        allUpperCase();
+        break;
+      case "All letters lowercase":
+        allLowerCase();
+        break;
+      case "Capitalize":
+        capitalize();
+        break;
+      case "Vowels&Consonants count":
+        vowelConsonantCount();
+        break;
+      case "Characters count":
+        charactersCount();
+        break;
+      case "Replace Characters":
+        replaceCharacters();
+        break;
+    }
   }
 });
