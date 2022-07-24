@@ -131,7 +131,8 @@ const replaceCharacters = () => {
     sendButton.addEventListener("click", () => {
       if (whatToChange.value && changeTarget.value) {
         appendElements(fromInputText, "Input:");
-        appendElements(resultText, "Result:", inputText.value.replace(whatToChange.value, changeTarget.value));
+        let replacement = inputText.value.replace(whatToChange.value, changeTarget.value)
+        appendElements(resultText, "Result:", replacement);
         replaceForm.style.display = 'none'
       }
     })
