@@ -108,7 +108,7 @@ const replaceCharacters = () => {
   if (inputText.value) {
     //Creating form to get additional data from user
     const replaceForm = document.createElement("div")
-    const whatToChage = document.createElement("input")
+    const whatToChange = document.createElement("input")
     const changeTarget = document.createElement("input")
     const sendButton = document.createElement("button")
 
@@ -117,21 +117,21 @@ const replaceCharacters = () => {
     sendButton.id = 'send-button'
 
     //Texts
-    whatToChage.placeholder = "what to change"
+    whatToChange.placeholder = "what to change"
     changeTarget.placeholder = "to what change"
     sendButton.innerText = "Send"
 
     //Putting all together
-    replaceForm.append(whatToChage)
+    replaceForm.append(whatToChange)
     replaceForm.append(changeTarget)
     replaceForm.append(sendButton)
     main.append(replaceForm)
 
     //Listening to button events to execute operational function
     sendButton.addEventListener("click", () => {
-      if (whatToChage && changeTarget) {
+      if (whatToChange.value && changeTarget.value) {
         appendElements(fromInputText, "Input:");
-        appendElements(resultText, "Result:", inputText.value.replace(changeTarget));
+        appendElements(resultText, "Result:", inputText.value.replace(whatToChange.value, changeTarget.value));
         replaceForm.style.display = 'none'
       }
     })
