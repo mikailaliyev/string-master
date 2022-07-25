@@ -104,10 +104,11 @@ const charactersCount = () => {
   resetInputOperations();
 };
 
-const replaceCharacters = () => {
+const replaceAllCharacters = () => {
   if (inputText.value) {
     //Creating form to get additional data from user
     const replaceForm = document.createElement("div")
+    const inputTextValue = document.createElement("p")
     const whatToChange = document.createElement("input")
     const changeTarget = document.createElement("input")
     const sendButton = document.createElement("button")
@@ -122,20 +123,26 @@ const replaceCharacters = () => {
     sendButton.innerText = "Send"
 
     //Putting all together
+    inputTextValue.append(inputText.value)
+    replaceForm.append(inputTextValue)
     replaceForm.append(whatToChange)
     replaceForm.append(changeTarget)
     replaceForm.append(sendButton)
     main.append(replaceForm)
 
+    //Getting value to use it inside eventListener
+    let input = inputText.value
+
+
     //Listening to button events to execute operational function
     sendButton.addEventListener("click", () => {
       if (whatToChange.value && changeTarget.value) {
-        appendElements(fromInputText, "Input:");
-        let replacement = inputText.value.replace(whatToChange.value, changeTarget.value)
-        appendElements(resultText, "Result:", replacement);
+        const replaceText = new RegExp(whatToChange.value, 'g')
+        appendElements(resultText, "Result:", input.replace(replaceText, changeTarget.value));
         replaceForm.style.display = 'none'
       }
     })
+    appendElements(fromInputText, "Input:");
   }
   resetInputOperations();
 };
@@ -163,8 +170,8 @@ selectedOperation.addEventListener("change", () => {
       case "Characters count":
         charactersCount();
         break;
-      case "Replace Characters":
-        replaceCharacters();
+      case "Replace All Characters":
+        replaceAllCharacters();
         break;
     }
   }
