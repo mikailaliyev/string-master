@@ -50,6 +50,23 @@ const capitalize = () => {
   resetInputOperations();
 };
 
+const capitalizeAllStrings = () => {
+  if (inputText.value) {
+    let strings = inputText.value.split(" ")
+    let stringsArray = []
+    for(string in strings) {
+      stringsArray.push(strings[string][0].toUpperCase() + strings[string].slice(1))
+    }
+    appendElements(fromInputText, "Input:");
+    appendElements(
+      resultText,
+      "Result:",
+      stringsArray.join(" ")
+    );
+  }
+  resetInputOperations();
+}
+
 const vowelConsonantCount = () => {
   if (inputText.value) {
     const vowels = ["a", "e", "i", "o", "u"];
@@ -107,40 +124,43 @@ const charactersCount = () => {
 const replaceSingleCharacter = () => {
   if (inputText.value) {
     //Creating form to get additional data from user
-    const replaceForm = document.createElement("div")
-    const inputTextValue = document.createElement("p")
-    const whatToChange = document.createElement("input")
-    const changeTarget = document.createElement("input")
-    const sendButton = document.createElement("button")
+    const replaceForm = document.createElement("div");
+    const inputTextValue = document.createElement("p");
+    const whatToChange = document.createElement("input");
+    const changeTarget = document.createElement("input");
+    const sendButton = document.createElement("button");
 
     //Adding id's
-    replaceForm.id = 'replace-form'
-    sendButton.id = 'send-button'
+    replaceForm.id = "replace-form";
+    sendButton.id = "send-button";
 
     //Texts
-    whatToChange.placeholder = "what to change"
-    changeTarget.placeholder = "to what change"
-    sendButton.innerText = "Send"
+    whatToChange.placeholder = "what to change";
+    changeTarget.placeholder = "to what change";
+    sendButton.innerText = "Send";
 
     //Putting all together
-    inputTextValue.append(inputText.value)
-    replaceForm.append(inputTextValue)
-    replaceForm.append(whatToChange)
-    replaceForm.append(changeTarget)
-    replaceForm.append(sendButton)
-    main.append(replaceForm)
+    inputTextValue.append(inputText.value);
+    replaceForm.append(inputTextValue);
+    replaceForm.append(whatToChange);
+    replaceForm.append(changeTarget);
+    replaceForm.append(sendButton);
+    main.append(replaceForm);
 
     //Getting value to use it inside eventListener
-    let input = inputText.value
-
+    let input = inputText.value;
 
     //Listening to button events to execute operational function
     sendButton.addEventListener("click", () => {
       if (whatToChange.value && changeTarget.value) {
-        appendElements(resultText, "Result:", input.replace(whatToChange.value, changeTarget.value));
-        replaceForm.style.display = 'none'
+        appendElements(
+          resultText,
+          "Result:",
+          input.replace(whatToChange.value, changeTarget.value)
+        );
+        replaceForm.style.display = "none";
       }
-    })    
+    });
     appendElements(fromInputText, "Input:");
   }
   resetInputOperations();
@@ -149,41 +169,44 @@ const replaceSingleCharacter = () => {
 const replaceAllCharacters = () => {
   if (inputText.value) {
     //Creating form to get additional data from user
-    const replaceForm = document.createElement("div")
-    const inputTextValue = document.createElement("p")
-    const whatToChange = document.createElement("input")
-    const changeTarget = document.createElement("input")
-    const sendButton = document.createElement("button")
+    const replaceForm = document.createElement("div");
+    const inputTextValue = document.createElement("p");
+    const whatToChange = document.createElement("input");
+    const changeTarget = document.createElement("input");
+    const sendButton = document.createElement("button");
 
     //Adding id's
-    replaceForm.id = 'replace-form'
-    sendButton.id = 'send-button'
+    replaceForm.id = "replace-form";
+    sendButton.id = "send-button";
 
     //Texts
-    whatToChange.placeholder = "what to change"
-    changeTarget.placeholder = "to what change"
-    sendButton.innerText = "Send"
+    whatToChange.placeholder = "what to change";
+    changeTarget.placeholder = "to what change";
+    sendButton.innerText = "Send";
 
     //Putting all together
-    inputTextValue.append(inputText.value)
-    replaceForm.append(inputTextValue)
-    replaceForm.append(whatToChange)
-    replaceForm.append(changeTarget)
-    replaceForm.append(sendButton)
-    main.append(replaceForm)
+    inputTextValue.append(inputText.value);
+    replaceForm.append(inputTextValue);
+    replaceForm.append(whatToChange);
+    replaceForm.append(changeTarget);
+    replaceForm.append(sendButton);
+    main.append(replaceForm);
 
     //Getting value to use it inside eventListener
-    let input = inputText.value
-
+    let input = inputText.value;
 
     //Listening to button events to execute operational function
     sendButton.addEventListener("click", () => {
       if (whatToChange.value && changeTarget.value) {
-        const replaceText = new RegExp(whatToChange.value, 'g')
-        appendElements(resultText, "Result:", input.replace(replaceText, changeTarget.value));
-        replaceForm.style.display = 'none'
+        const replaceText = new RegExp(whatToChange.value, "g");
+        appendElements(
+          resultText,
+          "Result:",
+          input.replace(replaceText, changeTarget.value)
+        );
+        replaceForm.style.display = "none";
       }
-    })
+    });
     appendElements(fromInputText, "Input:");
   }
   resetInputOperations();
@@ -192,8 +215,8 @@ const replaceAllCharacters = () => {
 //Listening to operation selection
 selectedOperation.addEventListener("change", () => {
   if (inputText.value) {
-    resultText.innerText = ""
-    fromInputText.innerText = ""
+    resultText.innerText = "";
+    fromInputText.innerText = "";
     let operationText =
       selectedOperation.options[selectedOperation.selectedIndex].text;
     switch (operationText) {
@@ -205,6 +228,9 @@ selectedOperation.addEventListener("change", () => {
         break;
       case "Capitalize":
         capitalize();
+        break;
+      case "Capitalize All Strings":
+        capitalizeAllStrings();
         break;
       case "Vowels&Consonants count":
         vowelConsonantCount();
