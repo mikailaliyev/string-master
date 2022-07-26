@@ -42,11 +42,13 @@ main {
   margin-top: 2%;
   outline-color: rgb(15, 54, 15);
   font-size: 1.2em;
+  appearance: none;
 }
 
 ::placeholder {
   color: rgba(128, 128, 128, 0.404);
 }
+
 
 #result-text {
   overflow-x: scroll;
