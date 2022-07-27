@@ -6,8 +6,7 @@ const main = document.getElementById("main");
 
 //Template for creating <br> with appending elements to DOM
 const appendElements = (target, text, operation) => {
-  target.append(text);
-  target.append(document.createElement("br"));
+  target.append(text, document.createElement("br"));
   if (operation) {
     target.append(operation);
   } else {
