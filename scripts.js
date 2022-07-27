@@ -51,20 +51,18 @@ const capitalize = () => {
 
 const capitalizeAllStrings = () => {
   if (inputText.value) {
-    let strings = inputText.value.split(" ")
-    let stringsArray = []
-    for(string in strings) {
-      stringsArray.push(strings[string][0].toUpperCase() + strings[string].slice(1))
+    let strings = inputText.value.split(" ");
+    let stringsArray = [];
+    for (string in strings) {
+      stringsArray.push(
+        strings[string][0].toUpperCase() + strings[string].slice(1)
+      );
     }
     appendElements(fromInputText, "Input:");
-    appendElements(
-      resultText,
-      "Result:",
-      stringsArray.join(" ")
-    );
+    appendElements(resultText, "Result:", stringsArray.join(" "));
   }
   resetInputOperations();
-}
+};
 
 const vowelConsonantCount = () => {
   if (inputText.value) {
@@ -113,9 +111,70 @@ const vowelConsonantCount = () => {
 };
 
 const charactersCount = () => {
+  let countCharacters = 0;
   if (inputText.value) {
     appendElements(fromInputText, "Input:");
-    appendElements(resultText, "Result:", inputText.value.length);
+    for (n in inputText.value) {
+      if (inputText.value[n] !== " ") {
+        countCharacters++;
+      }
+    }
+    appendElements(resultText, "Result:", countCharacters);
+  }
+  resetInputOperations();
+};
+
+const wordsNumbersCount = () => {
+  let countWords = 0;
+  let countDigits = 0;
+  const abc = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+  ];
+  const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+
+  if (inputText.value) {
+    let arrayFromInput = inputText.value.split(" ");
+    console.log(inputText.value);
+    for (n in arrayFromInput) {
+      if (arrayFromInput[n][0]) {
+        if (abc.includes(arrayFromInput[n][0].toLowerCase())) {
+          countWords++;
+        } else if (numbers.includes(arrayFromInput[n][0])) {
+          countDigits++;
+        }
+      }
+    }
+    appendElements(fromInputText, "Input:");
+    appendElements(
+      resultText,
+      "Result:",
+      `Words count: ${countWords}  Digits count: ${countDigits}`
+    );
   }
   resetInputOperations();
 };
@@ -231,11 +290,14 @@ selectedOperation.addEventListener("change", () => {
       case "Capitalize All Strings":
         capitalizeAllStrings();
         break;
-      case "Vowels&Consonants count":
+      case "Vowels&Consonants Count":
         vowelConsonantCount();
         break;
-      case "Characters count":
+      case "Characters Count":
         charactersCount();
+        break;
+      case "Words&Numbers Count":
+        wordsNumbersCount();
         break;
       case "Replace Single Character":
         replaceSingleCharacter();
