@@ -69,7 +69,7 @@ main {
 }
 
 ::selection {
-  background: rgb(15, 54, 15);
+  background: rgb(5, 93, 255);
   color: white;
 }
 
@@ -96,4 +96,9 @@ main {
   width: fit-content;
   height: fit-content;
   align-self: center;
+}
+
+/*To save additional white spaces input by user and show them afterwards*/
+p {
+  white-space: pre;
 }
