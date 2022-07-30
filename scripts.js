@@ -26,7 +26,7 @@ const allUpperCase = () => {
     appendElements(fromInputText, "Input:");
     appendElements(resultText, "Result:", inputText.value.toUpperCase());
   }
-  resetInputOperations();
+  // resetInputOperations();
 };
 
 const allLowerCase = () => {
@@ -34,7 +34,7 @@ const allLowerCase = () => {
     appendElements(fromInputText, "Input:");
     appendElements(resultText, "Result:", inputText.value.toLowerCase());
   }
-  resetInputOperations();
+  // resetInputOperations();
 };
 
 const capitalize = () => {
@@ -46,7 +46,7 @@ const capitalize = () => {
       inputText.value.charAt(0).toUpperCase() + inputText.value.slice(1)
     );
   }
-  resetInputOperations();
+  // resetInputOperations();
 };
 
 const capitalizeAllStrings = () => {
@@ -54,14 +54,18 @@ const capitalizeAllStrings = () => {
     let strings = inputText.value.split(" ");
     let stringsArray = [];
     for (string in strings) {
-      stringsArray.push(
-        strings[string][0].toUpperCase() + strings[string].slice(1)
-      );
+      if (strings[string] != "") {
+        stringsArray.push(
+          strings[string][0].toUpperCase() + strings[string].slice(1)
+        );
+      } else {
+        stringsArray.push(strings[string]);
+      }
     }
     appendElements(fromInputText, "Input:");
     appendElements(resultText, "Result:", stringsArray.join(" "));
   }
-  resetInputOperations();
+  // resetInputOperations();
 };
 
 const vowelConsonantCount = () => {
@@ -107,7 +111,7 @@ const vowelConsonantCount = () => {
       `Vowels count: ${countVowels}   Consonants count: ${countConsonants}`
     );
   }
-  resetInputOperations();
+  // resetInputOperations();
 };
 
 const charactersCount = () => {
@@ -121,7 +125,7 @@ const charactersCount = () => {
     }
     appendElements(resultText, "Result:", countCharacters);
   }
-  resetInputOperations();
+  // resetInputOperations();
 };
 
 const wordsNumbersCount = () => {
@@ -159,7 +163,6 @@ const wordsNumbersCount = () => {
 
   if (inputText.value) {
     let arrayFromInput = inputText.value.split(" ");
-    console.log(inputText.value);
     for (n in arrayFromInput) {
       if (arrayFromInput[n][0]) {
         if (abc.includes(arrayFromInput[n][0].toLowerCase())) {
@@ -173,10 +176,10 @@ const wordsNumbersCount = () => {
     appendElements(
       resultText,
       "Result:",
-      `Words count: ${countWords}  Digits count: ${countDigits}`
+      `Words count: ${countWords}  Numbers count: ${countDigits}`
     );
   }
-  resetInputOperations();
+  // resetInputOperations();
 };
 
 const replaceSingleCharacter = () => {
@@ -221,7 +224,7 @@ const replaceSingleCharacter = () => {
     });
     appendElements(fromInputText, "Input:");
   }
-  resetInputOperations();
+  // resetInputOperations();
 };
 
 const replaceAllCharacters = () => {
@@ -267,44 +270,44 @@ const replaceAllCharacters = () => {
     });
     appendElements(fromInputText, "Input:");
   }
-  resetInputOperations();
+  // resetInputOperations();
 };
 
 //Listening to operation selection
 selectedOperation.addEventListener("change", () => {
-  if (inputText.value) {
-    resultText.innerText = "";
-    fromInputText.innerText = "";
-    let operationText =
-      selectedOperation.options[selectedOperation.selectedIndex].text;
-    switch (operationText) {
-      case "All letters UPPERCASE":
-        allUpperCase();
-        break;
-      case "All letters lowercase":
-        allLowerCase();
-        break;
-      case "Capitalize":
-        capitalize();
-        break;
-      case "Capitalize All Strings":
-        capitalizeAllStrings();
-        break;
-      case "Vowels&Consonants Count":
-        vowelConsonantCount();
-        break;
-      case "Characters Count":
-        charactersCount();
-        break;
-      case "Words&Numbers Count":
-        wordsNumbersCount();
-        break;
-      case "Replace Single Character":
-        replaceSingleCharacter();
-        break;
-      case "Replace All Characters":
-        replaceAllCharacters();
-        break;
-    }
+  // if (inputText.value) {
+  resultText.innerText = "";
+  fromInputText.innerText = "";
+  let operationText =
+    selectedOperation.options[selectedOperation.selectedIndex].text;
+  switch (operationText) {
+    case "All letters UPPERCASE":
+      allUpperCase();
+      break;
+    case "All letters lowercase":
+      allLowerCase();
+      break;
+    case "Capitalize":
+      capitalize();
+      break;
+    case "Capitalize All Strings":
+      capitalizeAllStrings();
+      break;
+    case "Vowels&Consonants Count":
+      vowelConsonantCount();
+      break;
+    case "Characters Count":
+      charactersCount();
+      break;
+    case "Words&Numbers Count":
+      wordsNumbersCount();
+      break;
+    case "Replace Single Character":
+      replaceSingleCharacter();
+      break;
+    case "Replace All Characters":
+      replaceAllCharacters();
+      break;
   }
 });
+// });
