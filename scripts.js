@@ -8,15 +8,26 @@ const main = document.getElementById("main");
 const appendElements = (target, text, operation) => {
   target.append(text, document.createElement("br"));
   if (operation) {
-    target.append(operation);
+    target.append(operation, document.createElement("br"));
   } else {
     target.append(inputText.value);
   }
 };
 
+const copyToClipboard = () => {
+  const copyButton = document.createElement("button");
+  copyButton.innerText = "Copy";
+  copyButton.id = "copy-button";
+  copyButton.onclick = () => {
+    /* Copy the text inside the text field */
+    navigator.clipboard.writeText(resultText.innerText.slice(7, -5).trim());
+  };
+  resultText.append(copyButton);
+};
+
 //Reseting input and clearing last operation chosed
 const resetInputOperations = () => {
-  inputText.value = "";
+  // inputText.value = "";
   document.getElementById("operations").value = "0";
 };
 
@@ -26,6 +37,7 @@ const allUpperCase = () => {
     appendElements(fromInputText, "Input:");
     appendElements(resultText, "Result:", inputText.value.toUpperCase());
   }
+  copyToClipboard();
   // resetInputOperations();
 };
 
@@ -34,6 +46,7 @@ const allLowerCase = () => {
     appendElements(fromInputText, "Input:");
     appendElements(resultText, "Result:", inputText.value.toLowerCase());
   }
+  copyToClipboard();
   // resetInputOperations();
 };
 
@@ -46,6 +59,7 @@ const capitalize = () => {
       inputText.value.charAt(0).toUpperCase() + inputText.value.slice(1)
     );
   }
+  copyToClipboard();
   // resetInputOperations();
 };
 
@@ -65,6 +79,7 @@ const capitalizeAllStrings = () => {
     appendElements(fromInputText, "Input:");
     appendElements(resultText, "Result:", stringsArray.join(" "));
   }
+  copyToClipboard();
   // resetInputOperations();
 };
 
@@ -125,6 +140,7 @@ const charactersCount = () => {
     }
     appendElements(resultText, "Result:", countCharacters);
   }
+  copyToClipboard();
   // resetInputOperations();
 };
 
@@ -179,6 +195,7 @@ const wordsNumbersCount = () => {
       `Words count: ${countWords}  Numbers count: ${countDigits}`
     );
   }
+  copyToClipboard();
   // resetInputOperations();
 };
 
@@ -224,6 +241,7 @@ const replaceSingleCharacter = () => {
     });
     appendElements(fromInputText, "Input:");
   }
+  copyToClipboard();
   // resetInputOperations();
 };
 
@@ -270,44 +288,45 @@ const replaceAllCharacters = () => {
     });
     appendElements(fromInputText, "Input:");
   }
+  copyToClipboard();
   // resetInputOperations();
 };
 
 //Listening to operation selection
 selectedOperation.addEventListener("change", () => {
-  // if (inputText.value) {
-  resultText.innerText = "";
-  fromInputText.innerText = "";
-  let operationText =
-    selectedOperation.options[selectedOperation.selectedIndex].text;
-  switch (operationText) {
-    case "All letters UPPERCASE":
-      allUpperCase();
-      break;
-    case "All letters lowercase":
-      allLowerCase();
-      break;
-    case "Capitalize":
-      capitalize();
-      break;
-    case "Capitalize All Strings":
-      capitalizeAllStrings();
-      break;
-    case "Vowels&Consonants Count":
-      vowelConsonantCount();
-      break;
-    case "Characters Count":
-      charactersCount();
-      break;
-    case "Words&Numbers Count":
-      wordsNumbersCount();
-      break;
-    case "Replace Single Character":
-      replaceSingleCharacter();
-      break;
-    case "Replace All Characters":
-      replaceAllCharacters();
-      break;
+  if (inputText.value) {
+    resultText.innerText = "";
+    fromInputText.innerText = "";
+    let operationText =
+      selectedOperation.options[selectedOperation.selectedIndex].text;
+    switch (operationText) {
+      case "All letters UPPERCASE":
+        allUpperCase();
+        break;
+      case "All letters lowercase":
+        allLowerCase();
+        break;
+      case "Capitalize":
+        capitalize();
+        break;
+      case "Capitalize All Strings":
+        capitalizeAllStrings();
+        break;
+      case "Vowels&Consonants Count":
+        vowelConsonantCount();
+        break;
+      case "Characters Count":
+        charactersCount();
+        break;
+      case "Words&Numbers Count":
+        wordsNumbersCount();
+        break;
+      case "Replace Single Character":
+        replaceSingleCharacter();
+        break;
+      case "Replace All Characters":
+        replaceAllCharacters();
+        break;
+    }
   }
 });
-// });
