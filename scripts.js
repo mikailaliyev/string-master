@@ -38,7 +38,6 @@ const allUpperCase = () => {
     appendElements(resultText, "Result:", inputText.value.toUpperCase());
   }
   copyToClipboard();
-  // resetInputOperations();
 };
 
 const allLowerCase = () => {
@@ -47,7 +46,6 @@ const allLowerCase = () => {
     appendElements(resultText, "Result:", inputText.value.toLowerCase());
   }
   copyToClipboard();
-  // resetInputOperations();
 };
 
 const capitalize = () => {
@@ -60,7 +58,6 @@ const capitalize = () => {
     );
   }
   copyToClipboard();
-  // resetInputOperations();
 };
 
 const capitalizeAllStrings = () => {
@@ -80,7 +77,6 @@ const capitalizeAllStrings = () => {
     appendElements(resultText, "Result:", stringsArray.join(" "));
   }
   copyToClipboard();
-  // resetInputOperations();
 };
 
 const vowelConsonantCount = () => {
@@ -126,7 +122,6 @@ const vowelConsonantCount = () => {
       `Vowels count: ${countVowels}   Consonants count: ${countConsonants}`
     );
   }
-  // resetInputOperations();
 };
 
 const charactersCount = () => {
@@ -141,7 +136,6 @@ const charactersCount = () => {
     appendElements(resultText, "Result:", countCharacters);
   }
   copyToClipboard();
-  // resetInputOperations();
 };
 
 const wordsNumbersCount = () => {
@@ -196,7 +190,6 @@ const wordsNumbersCount = () => {
     );
   }
   copyToClipboard();
-  // resetInputOperations();
 };
 
 const replaceSingleCharacter = () => {
@@ -242,7 +235,6 @@ const replaceSingleCharacter = () => {
     appendElements(fromInputText, "Input:");
   }
   copyToClipboard();
-  // resetInputOperations();
 };
 
 const replaceAllCharacters = () => {
@@ -289,7 +281,6 @@ const replaceAllCharacters = () => {
     appendElements(fromInputText, "Input:");
   }
   copyToClipboard();
-  // resetInputOperations();
 };
 
 //Listening to operation selection
@@ -333,7 +324,7 @@ selectedOperation.addEventListener("change", () => {
 
 //Listening to user input to clear previous operation selection
 inputText.addEventListener("change", () => {
-  document.getElementById("operations").value = "0";
+  resetInputOperations()
 })
 
 //Selecting all input text in one click for convenience 
