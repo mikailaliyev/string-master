@@ -330,3 +330,13 @@ selectedOperation.addEventListener("change", () => {
     }
   }
 });
+
+//Listening to user input to clear previous operation selection
+inputText.addEventListener("change", () => {
+  document.getElementById("operations").value = "0";
+})
+
+//Selecting all input text in one click for convenience 
+inputText.addEventListener("click", ()=> {
+  inputText.select()
+})
