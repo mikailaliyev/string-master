@@ -102,3 +102,14 @@ main {
 p {
   white-space: pre;
 }
+
+#copy-button {
+  padding: 0.5%;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+#copy-button:active {
+  background-color:rgb(15, 54, 15); 
+  color: white;
+}
