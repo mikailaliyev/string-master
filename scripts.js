@@ -27,7 +27,8 @@ const copyToClipboard = () => {
 
 //Reseting input and clearing last operation chosed
 const resetInputOperations = () => {
-  // inputText.value = "";
+  fromInputText.innerText = ""
+  resultText.innerText = ""
   document.getElementById("operations").value = "0";
 };
 
@@ -231,10 +232,10 @@ const replaceSingleCharacter = () => {
         );
         replaceForm.style.display = "none";
       }
+      copyToClipboard();
     });
     appendElements(fromInputText, "Input:");
   }
-  copyToClipboard();
 };
 
 const replaceAllCharacters = () => {
@@ -277,10 +278,10 @@ const replaceAllCharacters = () => {
         );
         replaceForm.style.display = "none";
       }
+      copyToClipboard();
     });
     appendElements(fromInputText, "Input:");
   }
-  copyToClipboard();
 };
 
 //Listening to operation selection
@@ -323,11 +324,11 @@ selectedOperation.addEventListener("change", () => {
 });
 
 //Listening to user input to clear previous operation selection
-inputText.addEventListener("change", () => {
+inputText.addEventListener("focus", () => {
   resetInputOperations()
 })
 
 //Selecting all input text in one click for convenience 
-inputText.addEventListener("click", ()=> {
+inputText.addEventListener("click", () => {
   inputText.select()
 })
