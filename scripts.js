@@ -284,6 +284,13 @@ const replaceAllCharacters = () => {
   }
 };
 
+const removeWhitespaces = () => {
+  appendElements(fromInputText, "Input:");
+  appendElements(resultText,"Result:", inputText.value.split("").filter(i => i !== " ").join("")
+  );
+  copyToClipboard()
+}
+
 //Listening to operation selection
 selectedOperation.addEventListener("change", () => {
   if (inputText.value) {
@@ -318,6 +325,9 @@ selectedOperation.addEventListener("change", () => {
         break;
       case "Replace All Characters":
         replaceAllCharacters();
+        break;
+      case "Remove Whitespaces":
+        removeWhitespaces();
         break;
     }
   }
