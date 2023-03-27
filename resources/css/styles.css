@@ -27,7 +27,7 @@ main {
 }
 
 #input-text {
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
   width: 90%;
   font-size: 2em;
   text-align: center;
@@ -50,21 +50,23 @@ main {
 }
 
 #result-text {
-  overflow: scroll;
-  width: 99%;
+  overflow: hidden;
+  width: 90%;
   font-size: 2em;
   margin-top: 2%;
   text-align: center;
-  border: 1px dotted rgb(15, 54, 15);
+  border: 1px solid rgb(15, 54, 15);
+  border-radius: 10px;
 }
 
 #from-input-text {
-  overflow-x: scroll;
-  width: 99%;
+  overflow-x: hidden;
+  width: 90%;
   font-size: 2em;
   margin-top: 2%;
   text-align: center;
-  border: 1px dotted rgb(15, 54, 15);
+  border: 1px solid rgb(15, 54, 15);
+  border-radius: 10px;
 }
 
 ::selection {
