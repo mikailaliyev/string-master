@@ -27,8 +27,8 @@ const copyToClipboard = () => {
 
 //Reseting input and clearing last operation chosed
 const resetInputOperations = () => {
-  fromInputText.innerText = ""
-  resultText.innerText = ""
+  fromInputText.innerText = "Input:"
+  resultText.innerText = "Result:"
   document.getElementById("operations").value = "0";
 };
 
